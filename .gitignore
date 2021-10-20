@@ -1,0 +1,93 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
+#Folders from onedrive:
+slateAI_Backend/fleep
+slateAI_Backend/astor
+slateAI_Backend/librosa
+*.dylib
+slateAI_Backend/share
+*.pb
+slateAI_Backend/m9_mobilenet2
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+__pycache__
+
+#Chris
+.pkg
+.app
+*.app
+*.ap_
+*.zip
+*.pkg
+*.WAV
+*.wav
+*.h5
+*.dmg
+*.idea
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+.ipynb_checkpoints
+# Large files
+*.jpeg
+*.jpg
+*.h5
+*.hdf5
+*.onnx
+*.pb
+*.mp4
+*.WAV
+*.mp3
+
+#Johannes
+*.pyc
+**/__pycache__
+__pycache__
+*.pyc

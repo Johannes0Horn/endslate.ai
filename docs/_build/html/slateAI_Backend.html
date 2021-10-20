@@ -1,0 +1,1593 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Endslate.AI Backend &mdash; endslateAI  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="production" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> endslateAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">production</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Endslate.AI Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.Backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.ConfigManager">ConfigManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.CryptoManager">CryptoManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.LicenseManager">LicenseManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.LogManager">LogManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.PathManager">PathManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.PlaidMLManager">PlaidMLManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.PortManager">PortManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.AudioAnalyzer.AudioAnalyzer">AudioAnalyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.VideoAnalyzer.VideoAnalyzer">VideoAnalyzer: VideoAnalyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.VideoAnalyzer.SearchThread">VideoAnalyzer: SearchThread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-slateAI_Backend.VideoAnalyzer.SyncpointDetector">VideoAnalyzer: SyncpointDetector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">endslateAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">production</a> &raquo;</li>
+        
+      <li>Endslate.AI Backend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/slateAI_Backend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="endslate-ai-backend">
+<h1>Endslate.AI Backend<a class="headerlink" href="#endslate-ai-backend" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-slateAI_Backend.Backend">
+<span id="backend"></span><h2>Backend<a class="headerlink" href="#module-slateAI_Backend.Backend" title="Permalink to this headline">¶</a></h2>
+<p>Starting point of the Endslate.AI Backend.</p>
+<p>The Endslate.AI Backend communicates with the Endslate.AI Extensions
+and runs inference on media files.</p>
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.analyze_file">
+<code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">analyze_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#slateAI_Backend.Backend.analyze_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>The file is analyzed according to its mimetype.</p>
+<p>Each audio file is passed on to the AudioAnalyzer.
+For each video file a VideoAnalyzer is created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – The path to the file that needs to be analyzed.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{path: [420.69, 123.45]}</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A dict representing the sync points for the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.analyze_queue_loop">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">analyze_queue_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.analyze_queue_loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Periodically looks into task_queue and manages analysis jobs.</p>
+<p>Runs once a second.
+Removes disconnected clients.
+Checks if there is a path to process in the task_queue.
+If there is, an appropriate analysis job is created and the queue is updated.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.exit_if_already_running">
+<code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">exit_if_already_running</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.exit_if_already_running" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exits the program if another instance of the backend is already running.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.receive_messages">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">receive_messages</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">websocket</span></em>, <em class="sig-param"><span class="n">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.receive_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Listens for messages on the socket/port from params and triggers actions accordingly.</p>
+<p>This is the place where pausing/resuming, device management and task_queue population happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>websocket</strong> – The websocket to listen for messages on.</p></li>
+<li><p><strong>port</strong> – The port to listen for messages on.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.register_client">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">register_client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">websocket</span><span class="p">:</span> <span class="n">websockets.server.WebSocketServerProtocol</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.register_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a websocket client to the list of clients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>websocket</strong> – The websocket object of the client.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.send_active_device">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">send_active_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">experimental</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.send_active_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the currently active PlaidML device to all clients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – The device to be sent to clients as the currently active device.</p></li>
+<li><p><strong>experimental</strong> – True if device is experimental. Otherwise false.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.send_message_to_clients">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">send_message_to_clients</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.send_message_to_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a message to every client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The message to be sent to all clients.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.send_possible_devices">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">send_possible_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.send_possible_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends possible PlaidML devices to all clients.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.send_status">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">send_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.send_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends current status to all clients.</p>
+<p>Status contains the total amount of tasks, the remaining amount, the task that in progress and the device used.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.send_status_loop">
+<em class="property">async </em><code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">send_status_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.send_status_loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends current status to all clients, once every second.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="slateAI_Backend.Backend.unregister_disconnected_clients">
+<code class="sig-prename descclassname">slateAI_Backend.Backend.</code><code class="sig-name descname">unregister_disconnected_clients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.Backend.unregister_disconnected_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes websocket clients that are not responding from the list of clients.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.ConfigManager">
+<span id="configmanager"></span><h2>ConfigManager<a class="headerlink" href="#module-slateAI_Backend.ConfigManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that manages configurations/settings in a permanent JSON file.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.ConfigManager.</code><code class="sig-name descname">ConfigManager</code><a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Config reading, management and writing in/from a JSON file (config.json).</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager.path">
+<code class="sig-name descname">path</code><a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path of the config file to read/write.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runtime representation of the config as a dict: {“port”: 3333, “devices”: […, …]}.
+Do not edit this variable manually during runtime. Use the set function instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – The name of the setting to be retrieved.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of the setting.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager.readConfig">
+<code class="sig-name descname">readConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager.readConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads config from the config.json file into the data dict.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager.saveConfig">
+<code class="sig-name descname">saveConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager.saveConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes contents of the data dict into the config.json file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.ConfigManager.ConfigManager.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.ConfigManager.ConfigManager.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The name of the setting to be set.</p></li>
+<li><p><strong>value</strong> – The value of the setting to be set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.CryptoManager">
+<span id="cryptomanager"></span><h2>CryptoManager<a class="headerlink" href="#module-slateAI_Backend.CryptoManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that handles encryption and decryption of strings and files.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.CryptoManager.</code><code class="sig-name descname">CryptoManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">b'ieox261hca2(*292'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encrypts / decrypts strings and files.</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.key">
+<code class="sig-name descname">key</code><a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>The encryption key for all cryptographic operations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.decrypt">
+<code class="sig-name descname">decrypt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypts an AES encrypted message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The message in need of decryption in byte form.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The decrypted message as bytes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.decrypt_file">
+<code class="sig-name descname">decrypt_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.decrypt_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypts the AES encrypted text inside a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> – The path to the file in need of decryption.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.decrypt_string">
+<code class="sig-name descname">decrypt_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.decrypt_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypts an AES encrypted message into a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The message in need of decryption in byte form.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The decrypted message as a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.encrypt">
+<code class="sig-name descname">encrypt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypts a byte message using AES.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The message in need of encryption in byte form.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Encrypted message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.encrypt_file">
+<code class="sig-name descname">encrypt_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.encrypt_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypts the text inside a file using AES.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> – The path to the file in need of encryption.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.encrypt_string">
+<code class="sig-name descname">encrypt_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.encrypt_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypts a string message using AES.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The message string in need of encryption.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The encrypted message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.get_encrypted_string_from_file">
+<code class="sig-name descname">get_encrypted_string_from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>str<span class="p">, </span>bool<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.get_encrypted_string_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypts the AES encrypted text from a file and returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> – The path to the file in need of decryption.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The decrypted text from the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.pad">
+<code class="sig-name descname">pad</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pads a byte message for AES.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – Message to be padded.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Appropriately padded message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.CryptoManager.CryptoManager.write_encrypted_string_to_file">
+<code class="sig-name descname">write_encrypted_string_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.CryptoManager.CryptoManager.write_encrypted_string_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypts a message into a file using AES.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> – The path to the file the encrypted message needs to be saved in.</p></li>
+<li><p><strong>message</strong> – The message in need of encryption.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.LicenseManager">
+<span id="licensemanager"></span><h2>LicenseManager<a class="headerlink" href="#module-slateAI_Backend.LicenseManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that handles license verification.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.LicenseManager.</code><code class="sig-name descname">LicenseManager</code><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>License validation management.</p>
+<p>Usage: LicenseManager().check_license() -&gt; Should return true</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.filepath">
+<code class="sig-name descname">filepath</code><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.filepath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the license file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.crypto_manager">
+<code class="sig-name descname">crypto_manager</code><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.crypto_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>A CryptoManager instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.system_time">
+<code class="sig-name descname">system_time</code><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.system_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time in seconds at the point of class instance creation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.check_valid">
+<code class="sig-name descname">check_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.check_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Systematically validates license file.</p>
+<p>If the license file does not yet exist, it will be created.
+If the license or system time has been tampered with, the license is marked as invalid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if license is valid. Otherwise false.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.compare_time_with_systemtime">
+<code class="sig-name descname">compare_time_with_systemtime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timestamp</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.compare_time_with_systemtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if there is a time difference between the system time and the timestamp param.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timestamp</strong> – The timestamp that needs to be compared to the system time.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.get_timestamp_from_file">
+<code class="sig-name descname">get_timestamp_from_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.get_timestamp_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns timestamp saved in license file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.write_invalid_license_file">
+<code class="sig-name descname">write_invalid_license_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.write_invalid_license_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marks license as invalid in the license file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LicenseManager.LicenseManager.write_timestamp_to_file">
+<code class="sig-name descname">write_timestamp_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timestamp</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LicenseManager.LicenseManager.write_timestamp_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes timestamp from params into license file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.LogManager">
+<span id="logmanager"></span><h2>LogManager<a class="headerlink" href="#module-slateAI_Backend.LogManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that can log events in a permanent JSON file.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.LogManager.LogManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.LogManager.</code><code class="sig-name descname">LogManager</code><a class="headerlink" href="#slateAI_Backend.LogManager.LogManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Log reading, management and writing in/from a JSON file (log.json).</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.LogManager.LogManager.path">
+<code class="sig-name descname">path</code><a class="headerlink" href="#slateAI_Backend.LogManager.LogManager.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path of the logfile to read/write.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.LogManager.LogManager.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#slateAI_Backend.LogManager.LogManager.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runtime representation of the log as a dict: {“events”: […, …, …]}.
+Do not edit this variable manually during runtime. Use the log function instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LogManager.LogManager.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">log_obj</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">log_type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Standard'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LogManager.LogManager.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs the log_obj, adding the log_type and the current timestamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_obj</strong> – The object to log. If it is not a dict, it will be turned into one: {“content”: log_obj}.</p></li>
+<li><p><strong>log_type</strong> – Optional; Can be used to classify a log event. If not specified: “Standard”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LogManager.LogManager.read_log">
+<code class="sig-name descname">read_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LogManager.LogManager.read_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads log from the log.json file into the data dict.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.LogManager.LogManager.save_log">
+<code class="sig-name descname">save_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.LogManager.LogManager.save_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes contents of the data dict into the log.json file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.PathManager">
+<span id="pathmanager"></span><h2>PathManager<a class="headerlink" href="#module-slateAI_Backend.PathManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that handles path construction.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.PathManager.PathManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.PathManager.</code><code class="sig-name descname">PathManager</code><a class="headerlink" href="#slateAI_Backend.PathManager.PathManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Functions for retrieving system dependant paths.</p>
+<dl class="py method">
+<dt id="slateAI_Backend.PathManager.PathManager.get_app_path">
+<code class="sig-name descname">get_app_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#slateAI_Backend.PathManager.PathManager.get_app_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves application path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>For a .app / .exe this returns the absolute path to …/slateAI.app/Contents/MacOS.
+For a folder this returns the absolute path to …/slateAI.</p>
+<p>If the application is run as a bundle, the PyInstaller bootloader extends the sys module by a flag
+frozen=True and sets the app path into variable _MEIPASS.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PathManager.PathManager.get_data_path">
+<code class="sig-name descname">get_data_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#slateAI_Backend.PathManager.PathManager.get_data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path for the Application Support / Local App Data directory.</p>
+<p>If the directory does not exist yet, it will be created.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.PlaidMLManager">
+<span id="plaidmlmanager"></span><h2>PlaidMLManager<a class="headerlink" href="#module-slateAI_Backend.PlaidMLManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that creates and manages a PlaidML user configuration file.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.PlaidMLManager.</code><code class="sig-name descname">PlaidMLManager</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages the PlaidML user configuration file.</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_normal">
+<code class="sig-name descname">devices_normal</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of all non-experimental devices.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_experimental">
+<code class="sig-name descname">devices_experimental</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_experimental" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of all experimental devices.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_normal_working">
+<code class="sig-name descname">devices_normal_working</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_normal_working" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of all non-experimental working devices.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_experimental_working">
+<code class="sig-name descname">devices_experimental_working</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.devices_experimental_working" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of all experimental working devices.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.device_active_name">
+<code class="sig-name descname">device_active_name</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.device_active_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the currently active device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.device_active_experimental">
+<code class="sig-name descname">device_active_experimental</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.device_active_experimental" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bool indicating whether device_active_name is experimental.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.standard_tf_device">
+<code class="sig-name descname">standard_tf_device</code><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.standard_tf_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard Tensorflow device in case PlaidML is not viable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.get_devices">
+<code class="sig-name descname">get_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>List<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.get_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all PlaidML devices available on the system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.get_working_devices">
+<code class="sig-name descname">get_working_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>List<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.get_working_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests all available PlaidML devices and returns the working ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Working devices, divided in normal and experimental.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.is_setup_done">
+<code class="sig-name descname">is_setup_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.is_setup_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if PlaidML setup has already been done.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if setup already done. Otherwise false.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.main">
+<code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default PlaidML setup function. Deprecated, do not call.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.set_device">
+<code class="sig-name descname">set_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">experimental</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.set_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets device from params as PlaidML inference device, if it passes the test_device test.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PlaidMLManager.PlaidMLManager.test_device">
+<code class="sig-name descname">test_device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">experimental</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#slateAI_Backend.PlaidMLManager.PlaidMLManager.test_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests device from params with a matrix operation. Intel HD is omitted due to Windows not working with it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if device works. Otherwise false.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.PortManager">
+<span id="portmanager"></span><h2>PortManager<a class="headerlink" href="#module-slateAI_Backend.PortManager" title="Permalink to this headline">¶</a></h2>
+<p>A class that handles websocket port usage to communicate with extensions.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.PortManager.PortManager">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.PortManager.</code><code class="sig-name descname">PortManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="p">:</span> <span class="n">ConfigManager.ConfigManager</span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.PortManager.PortManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Port management for communicating with extensions.</p>
+<p>To communicate with Enslate.AI extensions we use websockets. This class contains methods that handle
+the determination of the port that will be used for these communications.</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.PortManager.PortManager.port">
+<code class="sig-name descname">port</code><a class="headerlink" href="#slateAI_Backend.PortManager.PortManager.port" title="Permalink to this definition">¶</a></dt>
+<dd><p>The port being used at the moment, either an int or None. It is not recommended to access the variable
+from outside the class. Use get_port instead.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.PortManager.PortManager.config">
+<code class="sig-name descname">config</code><a class="headerlink" href="#slateAI_Backend.PortManager.PortManager.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>The configuration object of this instance of the backend, used to read/write permanent port.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PortManager.PortManager.find_free_port">
+<code class="sig-name descname">find_free_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.PortManager.PortManager.find_free_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for a free port to use.</p>
+<p>Tests up to 100 possible consecutive ports starting at 3333. The first found free port is saved inside class
+and written to the ConfigManager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The first port found to be free.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PortManager.PortManager.get_port">
+<code class="sig-name descname">get_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.PortManager.PortManager.get_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Systematically looks for a port to use.</p>
+<p>If port is already set, it will be returned immediately.
+If there is a port saved in the config file, it will be tested and returned if it is still free.
+If there is no saved port in the config or the saved port is occupied, a new port will be found.
+Visualization: <a class="reference external" href="https://endslate-ai.atlassian.net/l/c/yJT5qyJ3">https://endslate-ai.atlassian.net/l/c/yJT5qyJ3</a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The port to be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.PortManager.PortManager.is_port_in_use">
+<code class="sig-name descname">is_port_in_use</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#slateAI_Backend.PortManager.PortManager.is_port_in_use" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to connect to a port to test whether it is free to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the port is free. Otherwise false.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.AudioAnalyzer.AudioAnalyzer">
+<span id="audioanalyzer"></span><h2>AudioAnalyzer<a class="headerlink" href="#module-slateAI_Backend.AudioAnalyzer.AudioAnalyzer" title="Permalink to this headline">¶</a></h2>
+<p>A class that systematically analyzes audio data looking for clap sync points.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.AudioAnalyzer.AudioAnalyzer.</code><code class="sig-name descname">AudioAnalyzer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logger</span><span class="p">:</span> <span class="n">LogManager.LogManager</span></em>, <em class="sig-param"><span class="n">plaidml_manager</span><span class="p">:</span> <span class="n">PlaidMLManager.PlaidMLManager</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A toolset of functions to look for clap sounds in audio data.</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.logger">
+<code class="sig-name descname">logger</code><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The logger to use for logging analyzed files.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.plaidml_manager">
+<code class="sig-name descname">plaidml_manager</code><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.plaidml_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>The PlaidMLManager object needed for accurate logging.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>The model used for infering one-second-chunks of audio data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.analyze">
+<code class="sig-name descname">analyze</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.analyze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyzes one single file given its path.</p>
+<p>The file is imported as a one-dimensional (mono) array of values/samples.
+The array is segmented into one-second-chunks, sorted by the highest/loudest value within each second.
+From every chunk the MFCC features are extracted and stacked for inference.
+The inference reveals the second containing the clap sound.
+The spectral features are used again to determine the exact timestamp of the clap
+(a clap sound is loud and has a pretty even spectral distribution).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – Path of the file that needs to be analyzed.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of timestamps (in seconds), where clap sounds were found at (currently just one).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.find_clap_in_second">
+<code class="sig-name descname">find_clap_in_second</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">second</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.find_clap_in_second" title="Permalink to this definition">¶</a></dt>
+<dd><p>Looks for the most likely position of the clap sound within a second of audio.</p>
+<p>A clap sound is usually the loudest sample within the second while having a pretty even spectrum.
+The function extracts the MFCC features from the second and identifies the column (one of 94)
+with the greatest sum, meaning the loudest one across the whole spectrum.
+Knowing the column it calculates the sample range in question and returns the position
+of the loudest sample within that range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>second</strong> – The second to be analyzed.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The position of the most probable clap sound within the second.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.get_maxima">
+<code class="sig-name descname">get_maxima</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channels</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">sr</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">seconds</span><span class="p">:</span> <span class="n">List<span class="p">[</span>List<span class="p">[</span>Union<span class="p">[</span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">amount</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.get_maxima" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the loudest seconds around the loudest samples within them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channels</strong> – The audio data that needs to be split.</p></li>
+<li><p><strong>sr</strong> – The sample rate of the audio data.</p></li>
+<li><p><strong>seconds</strong> – A list of lists characterizing seconds (has to come from sort_seconds function).
+Gets modified during this process.</p></li>
+<li><p><strong>amount</strong> – The amount of maxima that need to be processed.
+If there are not enough seconds, all seconds will be processed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of the audio arrays of maxima, centered around the loudest peak.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.get_mfcc">
+<code class="sig-name descname">get_mfcc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channels</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">sr</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">n_mfcc</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">40</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.get_mfcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the two-dimensional MFCC feature matrix (40x94) of an audio snippet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channels</strong> – The audio data to be converted to features.</p></li>
+<li><p><strong>sr</strong> – The sample rate of the audio data.</p></li>
+<li><p><strong>n_mfcc</strong> – Number of MFCC feature sets (rows).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A two-dimensional matrix of the features (40x94). Can be used for inference with the CNN.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>int<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a file from its path using the librosa package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – The path of the file that needs to be loaded.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An array containing all the samples, as well as the sample rate of the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">syncpoints</span><span class="p">:</span> <span class="n">List<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sr</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">file_duration</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">inference_duration</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a successful analysis event using the common logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – Path of the analyzed file.</p></li>
+<li><p><strong>syncpoints</strong> – Timestamps of claps (in seconds) found during analysis.</p></li>
+<li><p><strong>sr</strong> – Sample rate of the file.</p></li>
+<li><p><strong>file_duration</strong> – Duration of the file in seconds.</p></li>
+<li><p><strong>inference_duration</strong> – Duration of inference process in seconds.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inferes the data using the machine learning model loaded during init.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – The data in need of inference. Has to be a stack of 40x94 MFCC features.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of confidences for each feature set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.sort_seconds">
+<code class="sig-name descname">sort_seconds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channels</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">sr</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>List<span class="p">[</span>Union<span class="p">[</span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.sort_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments the audio into one-second chunks sorted by the loudest peak within them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channels</strong> – The audio data that needs to be split.</p></li>
+<li><p><strong>sr</strong> – The sample rate of the audio data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>start = the index of the starting sample: 0, 48000, 96000, …</p></li>
+<li><p>pos = the index of the loudest sample (counting from start index): 420, 6900, 88, …</p></li>
+<li><p>value = the loudest value within the second (positioned at pos): 0.1234, 0.5678, 0.901, …</p></li>
+</ul>
+<p>Looks like: [[0, 420, 0.1234], [48000, 6900, 0.5678], [96000, 88, 0.901], …].
+It is sorted by value.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A list of lists (one for each second), each containing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.stack_features">
+<code class="sig-name descname">stack_features</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">maxima</span><span class="p">:</span> <span class="n">List<span class="p">[</span>numpy.ndarray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sr</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#slateAI_Backend.AudioAnalyzer.AudioAnalyzer.AudioAnalyzer.stack_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>The features of multiple audio snippets are stacked on top of each other for faster inference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxima</strong> – The list of audio snippets to extract the features from.</p></li>
+<li><p><strong>sr</strong> – The sample rate of the audio data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A stacked feature set, ready for inference.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.VideoAnalyzer.VideoAnalyzer">
+<span id="videoanalyzer-videoanalyzer"></span><h2>VideoAnalyzer: VideoAnalyzer<a class="headerlink" href="#module-slateAI_Backend.VideoAnalyzer.VideoAnalyzer" title="Permalink to this headline">¶</a></h2>
+<p>A class that is the starting point of the VideoAnalyzer module.
+Contains functions for multi-threaded sync point searching inside a video file.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.VideoAnalyzer.VideoAnalyzer.</code><code class="sig-name descname">VideoAnalyzer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">video_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">VideoAnalyzer.Yolo3Model.Yolo3Model</span></em>, <em class="sig-param"><span class="n">sample_rate</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence_threshold</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">logger</span><span class="p">:</span> <span class="n">LogManager.LogManager</span></em>, <em class="sig-param"><span class="n">plaidml_manager</span><span class="p">:</span> <span class="n">PlaidMLManager.PlaidMLManager</span></em>, <em class="sig-param"><span class="n">margin</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Analyzes one single video file to find clap sync points.</p>
+<p>Creates threads for searching frames with slates inside the video file
+and uses the SyncPointDetector to find exact timestamps where the slate is being closed.</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.cap">
+<code class="sig-name descname">cap</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>An OpenCV VideoCapture object for the file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.fps">
+<code class="sig-name descname">fps</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.fps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The temporal resolution (frames per second) of the video file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.resolution">
+<code class="sig-name descname">resolution</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>The spacial resoluton [width, height] of the video file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.frame_count">
+<code class="sig-name descname">frame_count</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.frame_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total amount of frames in the video file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.duration">
+<code class="sig-name descname">duration</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>The duration of the video in seconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>The machine learning model used for inference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.sample_rate">
+<code class="sig-name descname">sample_rate</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.sample_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The step size while looking for slates in frames. Every (sample_rate)th will be analyzed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.confidence_threshold">
+<code class="sig-name descname">confidence_threshold</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.confidence_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimal confidence needed to categorize an image as having a slate in it.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.margin">
+<code class="sig-name descname">margin</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>??? -&gt; Not in need right now.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.video_path">
+<code class="sig-name descname">video_path</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.video_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path of the video file in need of analysis.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.logger">
+<code class="sig-name descname">logger</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LogManager to use for logging the analyzed file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">plaidml_manager = The common PlaidMLManager object.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">start_time = Timestamp of the initialization process / start of analysis.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.syncpoint_detector">
+<code class="sig-name descname">syncpoint_detector</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.syncpoint_detector" title="Permalink to this definition">¶</a></dt>
+<dd><p>The SyncpointDetector object used to find sync points in found slate frames.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.analyze_video">
+<code class="sig-name descname">analyze_video</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">workers</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_steps</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_retries</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>List<span class="p">[</span>float<span class="p">]</span><span class="p">, </span>int<span class="p">, </span>int<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.analyze_video" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs video analysis, looking for slate sync points.</p>
+<p>Creates threads for searching frames with slates inside the video file, creating “slate groups” of
+consecutive slate containing frames. It then uses the SyncPointDetector to find exact timestamps
+where the slate is being closed within the groups. Results are logged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>workers</strong> – Amount of threads to use for slate searching.</p></li>
+<li><p><strong>max_steps</strong> – Maximal amount of recursive steps the SyncPointDetector will make while searching in a group.</p></li>
+<li><p><strong>max_retries</strong> – Maximal amount of times a slate group will be searched for sync points by SyncPointDetector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of sync points, the FPS of the video file, the sample_rate / group padding used by the
+SyncPointDetector, the spacial resolution of the video and the duration of the video.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.group_slate_frames">
+<code class="sig-name descname">group_slate_frames</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.group_slate_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of frames is grouped by temporal distance.</p>
+<p>A list of frame numbers where slates were found is divided into groups of frames that are close to each other.
+The criterion is two neighboring found frames are at most one sample_rate frames away from each other.
+#
+##########################################
+Example:
+input = [2, 3, 5, 11, 14, 15, 17, 29, 31]
+sample_rate = 4
+output = [[2,3,5], [11,14,15,17], [29,31]]
+##########################################
+#
+The groups can be used to search for the exact frame where the slate closes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frames</strong> – A sorted list of frame numbers to sort into groups.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of groups (lists) containing frame numbers, grouped by temporal distance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.jump_search">
+<code class="sig-name descname">jump_search</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">thread_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">predictions</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>int<span class="p">, </span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">steps_done</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.jump_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs jump search using the sample_rate within a specified chunk of the video file.</p>
+<p>Visual example: chunk = (0, 15). With a sample_rate of 4, every fourth frame of the chunk
+(numbers 0, 4, 8 and 12) is going to be analyzed = infered with the machine learning model.
+#############################################################################################################…
+#—–|     |     |     <a href="#id3"><span class="problematic" id="id4">|-----|</span></a>     |     |     <a href="#id5"><span class="problematic" id="id6">|-----|</span></a>     |     |     <a href="#id7"><span class="problematic" id="id8">|-----|</span></a>     |     |     #—–|     <a href="#id9"><span class="problematic" id="id10">|...
+#--0--|</span></a>  1  |  2  |  3  <a href="#id11"><span class="problematic" id="id12">|--4--|</span></a>  5  |  6  |  7  <a href="#id13"><span class="problematic" id="id14">|--8--|</span></a>  9  | 10  | 11  <a href="#id15"><span class="problematic" id="id16">|-12--|</span></a> 13  | 14  | 15  #-16–| 17  <a href="#id17"><span class="problematic" id="id18">|...
+#-----|</span></a>     |     |     <a href="#id19"><span class="problematic" id="id20">|-----|</span></a>     |     |     <a href="#id21"><span class="problematic" id="id22">|-----|</span></a>     |     |     <a href="#id23"><span class="problematic" id="id24">|-----|</span></a>     |     |     #—–|     <a href="#id25"><span class="problematic" id="id26">|...
+#############################################################################################################...
+|_____|_____|</span></a></p>
+<blockquote>
+<div><p>frame frame …</p>
+</div></blockquote>
+<dl class="simple">
+<dt><a href="#id27"><span class="problematic" id="id28">|_______________________________________________________________________________________________|</span></a></dt><dd><p>chunk</p>
+</dd>
+<dt><a href="#id1"><span class="problematic" id="id2">|</span></a>____________________________________________________________________________________________________________…</dt><dd><p>file -&gt;</p>
+</dd>
+</dl>
+<p>The results of the model predictions are saved into the predictions dict (shared by all workers/threads)
+so that they can be accessed by the thread running the function and the multi_threaded_search function
+that started the threads in the first place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunk</strong> – A tuple containing the start and end frame numbers of the chunk to be analyzed.</p></li>
+<li><p><strong>thread_id</strong> – A unique number identifying the thread that is running this function.</p></li>
+<li><p><strong>predictions</strong> – A dict containing the predicted confidences for each analyzed frame:
+{frame_number: confidence, …}</p></li>
+<li><p><strong>steps_done</strong> – Amount of frames analyzed. Starts at 0, ends at video_analyzer.sample_rate.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">syncpoints</span><span class="p">:</span> <span class="n">List<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">inference_duration</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a successful analysis event using the common logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>syncpoints</strong> – A list of found sync points to log.</p></li>
+<li><p><strong>inference_duration</strong> – The duration of the inference process to log.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.multi_threaded_search">
+<code class="sig-name descname">multi_threaded_search</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">workers</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Dict<span class="p">[</span>int<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>List<span class="p">[</span>VideoAnalyzer.SearchThread.SearchThread<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.VideoAnalyzer.VideoAnalyzer.multi_threaded_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts multiple threads/workers to search for slates inside frames.</p>
+<p>Divides the video file into chunks of consecutive frames and assigns each chunk to a separate Thread.
+Visual example: a 24 frame video separated into 4 chunks, assigned to 4 workers:
+###################################################################################################
+##   |   |   |   |   |   #   |   |   |   |   |   #   |   |   |   |   |   #   |   |   |   |   |   ##
+##   chunk 0: worker 0   #   chunk 1: worker 1   #   chunk 2: worker 2   #   chunk 3: worker 3   ##
+##   |   |   |   |   |   #   |   |   |   |   |   #   |   |   |   |   |   #   |   |   |   |   |   ##
+###################################################################################################</p>
+<blockquote>
+<div><p><a href="#id29"><span class="problematic" id="id30">|___|</span></a>
+frame
+<a href="#id31"><span class="problematic" id="id32">|_______________________|</span></a></p>
+<blockquote>
+<div><p>chunk</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="simple">
+<dt><a href="#id33"><span class="problematic" id="id34">|_________________________________________________________________________________________________|</span></a></dt><dd><p>file</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>workers</strong> – Amount of chunks and threads/workers.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>confidence, …},
+and a list containing all thread objects.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A dict with predictions {frame_number</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.VideoAnalyzer.SearchThread">
+<span id="videoanalyzer-searchthread"></span><h2>VideoAnalyzer: SearchThread<a class="headerlink" href="#module-slateAI_Backend.VideoAnalyzer.SearchThread" title="Permalink to this headline">¶</a></h2>
+<p>A class for multi-threading jump search tasks.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.VideoAnalyzer.SearchThread.</code><code class="sig-name descname">SearchThread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thread_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">chunk</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">predictions</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>int<span class="p">, </span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">video_analyzer</span></em>, <em class="sig-param"><span class="n">steps_done</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>This class overrides the functionality of a normal thread with a jump search task.</p>
+<p>The function for the jump search itself lies in VideoAnalyzer and is referenced through the video_analyzer param.
+Usage inside VideoAnalyzer:
+worker = SearchThread(0, (0,100), {}, self, 0)
+worker.start()
+-&gt; The “self” is the important part here. The other attributes are passed on to video_analyzer.jump_search().</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.thread_id">
+<code class="sig-name descname">thread_id</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.thread_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique number identifying the thread.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.chunk">
+<code class="sig-name descname">chunk</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.chunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple containing the start and end frame numbers of the chunk to be analyzed by the thread.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.predictions">
+<code class="sig-name descname">predictions</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dict containing the predicted confidences for each analyzed frame: {frame_number: confidence,…}</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.video_analyzer">
+<code class="sig-name descname">video_analyzer</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.video_analyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The VideoAnalyzer object of the file in question.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.steps_done">
+<code class="sig-name descname">steps_done</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.steps_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amount of frames analyzed. Starts at 0, ends at video_analyzer.sample_rate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">start = Timestamp, when the thread has been started running.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">end = Timestamp, when the thread has finished running.</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs jump search within the defined chunk.</p>
+<p>The jump_search() function of the VideoAnalyzer is called and timed.
+Do not call separately. The thread starts by calling worker.start().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.terminate">
+<code class="sig-name descname">terminate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SearchThread.SearchThread.terminate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Terminates the thread.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-slateAI_Backend.VideoAnalyzer.SyncpointDetector">
+<span id="videoanalyzer-syncpointdetector"></span><h2>VideoAnalyzer: SyncpointDetector<a class="headerlink" href="#module-slateAI_Backend.VideoAnalyzer.SyncpointDetector" title="Permalink to this headline">¶</a></h2>
+<p>A class containing functions for efficient slate sync point detection in groups of consecutive video frames.</p>
+<dl class="py class">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector">
+<em class="property">class </em><code class="sig-prename descclassname">slateAI_Backend.VideoAnalyzer.SyncpointDetector.</code><code class="sig-name descname">SyncpointDetector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">confidence_margin</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence_threshold</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">VideoAnalyzer.Yolo3Model.Yolo3Model</span></em>, <em class="sig-param"><span class="n">cap</span><span class="p">:</span> <span class="n">cv2.VideoCapture</span></em>, <em class="sig-param"><span class="n">sample_rate</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>For each group of consecutive slate-containing frames the exact sync points (slate is closed) are found.</p>
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.confidence_margin">
+<code class="sig-name descname">confidence_margin</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.confidence_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.confidence_threshold">
+<code class="sig-name descname">confidence_threshold</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.confidence_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimal confidence needed to categorize an image as having an open/closed slate in it.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>The machine learning model used for inference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.cap">
+<code class="sig-name descname">cap</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>An OpenCV VideoCapture object for the file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.sample_rate">
+<code class="sig-name descname">sample_rate</code><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.sample_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The step size used by the VideoAnalyzer while looking for slates in frames.
+Every (sample_rate)th frame was analyzed. Used here to extend/pad the borders of a “slate group”
+by one sample in each direction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.fill_empty_predictions">
+<code class="sig-name descname">fill_empty_predictions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first_frame</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">last_frame</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">current_frame</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.fill_empty_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depending on the position of the current_frame within the group boundaries, 3 class indices are returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>first_frame</strong> – Index of the first frame of the group.</p></li>
+<li><p><strong>last_frame</strong> – Index of the last frame of the group.</p></li>
+<li><p><strong>current_frame</strong> – Index of the frame in question.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of three class indices, either all “open” or all “closed”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.find_all_syncpoints_binary">
+<code class="sig-name descname">find_all_syncpoints_binary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">groups</span><span class="p">:</span> <span class="n">List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">max_steps</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">max_retries</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">3</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.find_all_syncpoints_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each group of consecutive slate-containing frames the exact sync points (slate is closed) are found.</p>
+<p>Each group is searched in a binary manner until a sync point can be found, using syncpoint_search_fast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups</strong> – A list of lists/groups to look for sync points in.</p></li>
+<li><p><strong>max_steps</strong> – Maximal amount of recursive steps the binary search will make while searching in a slate group.</p></li>
+<li><p><strong>max_retries</strong> – Maximal amount of times a slate group will be searched for sync points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of found slate sync points, each as frame numbers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.find_sync_points">
+<code class="sig-name descname">find_sync_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">states</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.find_sync_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for the first closed frames after an open frame -&gt; sync point candidates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>states</strong> – An array of class indices: np.ndarray[1,1,1,0,0,0,0,,1,1,1].</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of sync point candidates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.get_class_indexes">
+<em class="property">static </em><code class="sig-name descname">get_class_indexes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">predictions</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>int<span class="p">, </span>numpy.ndarray<span class="p">]</span><span class="p">]</span><span class="p">, </span><span class="p">…</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.get_class_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a tuple of predictions (coming from make_predictions), the predicted classes are extracted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predictions</strong> – The predictions to extract the class indices from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of the predicted class indices.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.improved_syncpoint_detection">
+<code class="sig-name descname">improved_syncpoint_detection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">predicted_states</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">confidence_values</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.improved_syncpoint_detection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the predicted classes and confidences to guess the likeliest sync point frame index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frames</strong> – A list of consecutive frame indices.</p></li>
+<li><p><strong>predicted_states</strong> – The predicted class indices of the frame indices in the frame param.</p></li>
+<li><p><strong>confidence_values</strong> – The confidence values of the predicted classes of the frame indices in the frame param.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The frame index of the retrieved sync point.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.make_predictions">
+<code class="sig-name descname">make_predictions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frame_number</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>int<span class="p">, </span>numpy.ndarray<span class="p">]</span><span class="p">]</span><span class="p">, </span>Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>int<span class="p">, </span>numpy.ndarray<span class="p">]</span><span class="p">]</span><span class="p">, </span>Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>int<span class="p">, </span>numpy.ndarray<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.make_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the machine learning model to predict the open/closed state of the slate in a frame and its neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame_number</strong> – The frame in question.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple with predictions for the frame in question and its two direct neighbors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.pad">
+<code class="sig-name descname">pad</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">current_frame</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">padded_prediction</span><span class="p">:</span> <span class="n">List</span></em><span class="sig-paren">)</span><a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inferes the current_frame and writes prediction into padded_prediction variable.</p>
+<p>One prediction has the following form: np.ndarray[frame_index, class_index, confidence].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_frame</strong> – The frame to infere.</p></li>
+<li><p><strong>padded_prediction</strong> – The list of predictions to add the current prediction to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.pad_final_prediction">
+<code class="sig-name descname">pad_final_prediction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frame_number</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.pad_final_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>(1 x confidence_margin) frames before and after the frame from param are infered again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame_number</strong> – The frame in question.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>np.ndarray[np.ndarray[frame_index, class_index, confidence], …]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>An array containing the predictions for the ((2 x confidence_margin) + 1) frames</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.return_syncpoint_on_timeout">
+<em class="property">static </em><code class="sig-name descname">return_syncpoint_on_timeout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frame_number</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">class_indexes</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.return_syncpoint_on_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the first possible sync point within an array of predicted class indices. This is a last resort!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame_number</strong> – The frame index the binary search is currently at.</p></li>
+<li><p><strong>class_indexes</strong> – An array of predicted class indices.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.syncpoint_binary_search">
+<code class="sig-name descname">syncpoint_binary_search</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first_frame</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">last_frame</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">frame_number</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">step_size</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">original_step_size</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_steps</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_retries</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.syncpoint_binary_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursively searches for the frame where the slate is closed in a binary manner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>first_frame</strong> – Index of the first frame of the group.</p></li>
+<li><p><strong>last_frame</strong> – Index of the last frame of group.</p></li>
+<li><p><strong>frame_number</strong> – Index of the frame in the middle, the one that will be analyzed in this iteration.</p></li>
+<li><p><strong>step_size</strong> – Indicates how many frames lie in between the last analysed frame and this one.</p></li>
+<li><p><strong>max_steps</strong> – Amount of recursive steps left before the binary search auto-finishes.</p></li>
+<li><p><strong>max_retries</strong> – Maximal amount of times the group will be searched.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.syncpoint_search_fast">
+<code class="sig-name descname">syncpoint_search_fast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first_frame_number</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">last_frame_number</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_steps</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">max_retries</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">3</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#slateAI_Backend.VideoAnalyzer.SyncpointDetector.SyncpointDetector.syncpoint_search_fast" title="Permalink to this definition">¶</a></dt>
+<dd><p>The slate group defined by first_frame_number and last_frame_number is widened and sent to the binary search.</p>
+<p>The frame group borders are extended bs sample_rate in each direction.
+Example: With a sample_rate of 30 a group defined by frames 69 and 420 grows to include frames 39 - 450.
+This is the initial starting point of the binary search algorithm. The 1st frame to analyze is determined here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>first_frame_number</strong> – Index of the first frame of the group to analyze.</p></li>
+<li><p><strong>last_frame_number</strong> – Index of the last frame of the group to analyze.</p></li>
+<li><p><strong>max_steps</strong> – Maximal amount of recursive steps the binary search will make while searching in a slate group.</p></li>
+<li><p><strong>max_retries</strong> – Maximal amount of times a slate group will be searched for sync points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The sync point found within the group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="production" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Christian Hofmann, Daniel Bruckner, Johannes Horn, Matvey Fridman
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Main">
+    <file>Resourcefiles/chatbot.gif</file>
+    <file>Resourcefiles/Startupflaeche.png</file>
+  </qresource>
+</RCC>

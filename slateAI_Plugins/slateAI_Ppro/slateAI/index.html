@@ -1,0 +1,430 @@
+<!doctype html>
+<!--
+/*************************************************************************
+* ADOBE CONFIDENTIAL
+* ___________________
+*
+* Copyright 2019 Adobe
+* All Rights Reserved.
+*
+* NOTICE: Adobe permits you to use, modify, and distribute this file in
+* accordance with the terms of the Adobe license agreement accompanying
+* it. If you have received this file from a source other than Adobe,
+* then your use, modification, or distribution of it requires the prior
+* written permission of Adobe. 
+**************************************************************************/
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="./ext.js"></script>
+    <script src="./lib/CSInterface.js"></script>
+    <script src="./lib/jquery-1.9.1.js"></script>
+    <script src="./lib/Vulcan.js"></script>
+
+    <link id="ppstyle" href="css/style.css" rel="stylesheet" type="text/css">
+    <link id="animatedButton" href="css/animated.button.css" rel="stylesheet" type="text/css">
+    <!-- bootstrap stylesheet -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./lib/bootstrap.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            updateProgressbar(0, 0);
+
+            //disable text when too small
+
+            $("#findClapslButton").on("click", function (e) {
+                handleFindClapslButton();
+            });
+            $("#pauseButton").hide();
+            $("#pauseButton").on("click", function (e) {
+                togglePauseButton();
+            });
+
+            $("#promtDone").hide();
+
+            //DEBUG BUTTON LISTENER METHODS
+            $("#debug-items").hide();
+
+            $("#versionButton").on("click", function (e) {
+                e.preventDefault();
+                var csInterface = new CSInterface();
+                csInterface.evalScript('$._PPP_.getVersionInfo()', showVersionInfo);
+            });
+            $("#apiVersionButton").on("click", function (e) {
+                e.preventDefault();
+                var csInterface = new CSInterface();
+                var version = csInterface.getCurrentApiVersion();
+                showAPIVersionInfo("APIVersion: " + version["major"] + "." + version["micro"] + "." + version["minor"]);
+            });
+            $("#getPathsButton").on("click", function (e) {
+                e.preventDefault();
+                var csInterface = new CSInterface();
+                csInterface.evalScript('$._PPP_.getSelectedItemPaths()', showProjectItemPaths);
+            });
+            $("#sendPathsButton").on("click", function (e) {
+                sendPaths();
+            });
+            $("#refreshPanelButton").on("click", function (e) {
+                refreshPanel();
+            });
+            $("#startBackendButton").on("click", function (e) {
+                startBackend();
+            });
+            $("#connectToBackendButton").on("click", function (e) {
+                connectToBackend();
+            });
+            $("#checkIfBackendAliveButton").on("click", function (e) {
+                checkIfBackendAlive();
+            });
+            $("#getBackendDirButton").on("click", function (e) {
+                getBackendDir();
+            });
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+        });
+
+        /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+        function toggleDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+    </script>
+</head>
+
+<body onLoad="onLoaded()">
+    <div id="background">
+
+
+        <div id="logo_and_text">
+            <div id="explanation">
+                <ul style="list-style-type: decimal; color: lightgray">
+                    <li>Select Video/Audio files or their containing folder(s) in the Mediabrowser.</li>
+                    <li>Click "Find Claps" to find claps in Audio and Videofiles automatically. They will be represented
+                        by Markers named "SyncMarker".</li>
+                    <li>Use SyncMarkers to synchronize your Video and Audio Files.</li>
+                </ul>
+            </div>
+            <div id="logo">
+                <img src="./media/Slate_Logo.png">
+            </div>
+        </div>
+
+        <div class="progress" ; style="width:100%;height:20px; margin-bottom: 3px" ;>
+            <div class="progress">
+                <div id="allprogressbar" class="progress-bar progress-bar-striped active" role="progressbar"
+                    style="width:20%">
+                </div>
+            </div>
+        </div>
+
+        <div id="progressbarTextinfo">
+        </div>
+
+        <div class="dropdown">
+            <button id="plaidmldropdownbutton" onclick="toggleDropdown()" class="dropbtn">Please choose a Device</button>
+            <div id="myDropdown" class="dropdown-content">
+
+            </div>
+        </div>
+
+
+        <div id="pauseButton">
+            Pause
+        </div>
+        <br> <br>
+
+        <div id="promtDone">
+            <!---&#9989; Checkbox icon--->
+            &#9989; All files successfully analysed &#9989;
+        </div>
+
+        <div id="findClapslButton">
+            <div id="FindClapsText"> Find Claps</div>
+        </div>
+
+        <div id="buttonOverlay">
+            <div id="buttonOverlayText"> Trying to connect to backend...</div>
+        </div>
+
+        <!-- debug items-->
+        <div id=debug-items>
+            <button class="controlBg textStyle" id="refreshPanelButton">Refresh Panel</button>
+            <button class="controlBg textStyle" id="versionButton">getVersionInfo</button>
+            <button class="controlBg textStyle" id="apiVersionButton">getAPI VersionInfo</button>
+            <button class="controlBg textStyle" id="getPathsButton">Get Paths!</button>
+            <button class="controlBg textStyle" id="getBackendDirButton">getBackendDir!</button>
+            <button class="controlBg textStyle" id="startBackendButton">startBackend!</button>
+            <button class="controlBg textStyle" id="checkIfBackendAliveButton">checkIfBackendAlive</button>
+            <button class="controlBg textStyle" id="connectToBackendButton">connectToBackend!</button>
+            <button class="controlBg textStyle" id="sendPathsButton">Send Paths!</button>
+
+            <div id="outputtest">
+            </div>
+            <div id="backendStatus">
+            </div>
+            <div id="InPointOfFirstItem">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<style>
+    #background {
+        cursor: initial;
+        padding: 10px
+    }
+
+    body {
+        #background-image: url('./media/Startupflaeche.png');
+        #background-repeat: no-repeat;
+        #background-attachment: fixed;
+        #background-size: cover;
+        background-color: rgb(35, 35, 35);
+        min-width: 100px;
+    }
+
+
+    p {
+        text-align: left;
+        color: lightgray;
+        margin: 0px;
+        font-size: small;
+    }
+
+    #logo_and_text {
+        margin-top: 10px;
+    }
+
+    #explanation {
+        width: 78%;
+        float: right;
+        vertical-align: middle;
+        font-size: small;
+        margin-bottom: 10px;
+    }
+
+    #findClapslButton,
+    #buttonOverlay {
+        border-radius: 5px;
+        background-color: #FFA100;
+        position: fixed;
+        top: 68%;
+        left: 30%;
+        right: 30%;
+        #width: 82%;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    #pauseButton {
+        border-radius: 5px;
+        background-color: red;
+        position: fixed;
+        #top: 5%;
+        #right: 4%;
+        width: 15%;
+        #height: 10%;
+        margin-top: 25px;
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        /* The same as your div height */
+    }
+
+    #progressbarTextinfo {
+        position: fixed;
+        color: lightgrey;
+        cursor: pointer;
+        text-align: left;
+        font-size: small;
+    }
+
+
+
+    #FindClapsText {
+        cursor: pointer;
+        color: #414141;
+        text-align: center;
+        font-size: medium;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    #logo {
+        width: 22%;
+        float: left;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    #buttonOverlayText {
+        cursor: pointer;
+        color: white;
+        text-align: center;
+        font-size: normal;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    #buttonOverlay {
+        cursor: default;
+        background-color: gray
+    }
+
+    #findClapslButton_new {
+        margin-top: 10%;
+        height: 30px;
+
+    }
+
+    #promtDone {
+        text-align: center;
+        color: white;
+        font-size: medium;
+    }
+
+    img {
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+    }
+
+
+    @media only screen and (max-width: 300px) {
+        #explanation {
+            display: none;
+        }
+    }
+
+
+    /*DROPDOWN plaidml*/
+    .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    .dropdown {
+        position: relative;
+        /*display: inline-block;*/
+        float: right;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {
+        background-color: #ddd;
+    }
+
+    .show {
+        display: block;
+    }
+</style>
+
+<script>
+    document.body.onbeforeunload = function () {
+        var csInterface = new CSInterface();
+        var OSVersion = csInterface.getOSInformation();
+        var appVersion = csInterface.hostEnvironment.appVersion;
+        var versionAsFloat = parseFloat(appVersion);
+
+        csInterface.evalScript('$._PPP_.closeLog()');
+
+        if (versionAsFloat < 10.3) {
+            var path = "file:///Library/Application Support/Adobe/CEP/extensions/PProPanel/payloads/onbeforeunload.html";
+
+            if (OSVersion.indexOf("Windows") >= 0) {
+                path = "file:///C:/Program%20Files%20(x86)/Common%20Files/Adobe/CEP/extensions/PProPanel/payloads/onbeforeunload.html"
+            }
+            csInterface.openURLInDefaultBrowser(path);
+        }
+    };
+
+    var createFolders = function () {
+        var csInterface = new CSInterface();
+        csInterface.callScript(
+            '$._PPP_',
+            'createDeepFolderStructure',
+            function (res) {
+                console.log('Successfully created folders!');
+            },
+            function (err) {
+                console.error(err);
+                alert(err.message);
+            }, ['This', 'is', 'a', 'very', 'deep', 'folder', 'structure'], // 1st argument
+            6 // 2nd argument
+        );
+    };
+
+    // Prevent DragnDropAction
+    window.addEventListener("dragover", function (e) {
+        e = e || event;
+        e.preventDefault();
+    }, false);
+    window.addEventListener("drop", function (e) {
+        e = e || event;
+        e.preventDefault();
+    }, false);
+</script>
+
+</html>

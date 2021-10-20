@@ -1,0 +1,16 @@
+checkpoint
+mAP
+
+.ipynb_checkpoints
+data/log/
+
+*.pb
+*.zip
+*.jpg
+*.jpeg
+*.mp4
+*.MOV
+
+__pycache__
+/.idea/
+/test_video/test_upload/

@@ -1,0 +1,6 @@
+Extra sign:
+
+      "path": "slateAI.app.zip/slateAI.app/Contents/Resources/imageio_ffmpeg/binaries/ffmpeg-osx64-v4.1",
+
+
+In subcomponent: /Users/christianhofmann/Documents/BitBucket/endslate.ai/Chris_Development/Deployment_Skript/slateAI.app/Contents/MacOS/lib/python3.7

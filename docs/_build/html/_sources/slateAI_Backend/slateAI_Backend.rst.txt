@@ -1,0 +1,53 @@
+slateAI\_Backend package
+========================
+
+Submodules
+----------
+
+slateAI\_Backend.customcrypto module
+------------------------------------
+
+.. automodule:: slateAI_Backend.customcrypto
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+slateAI\_Backend.customlicense module
+-------------------------------------
+
+.. automodule:: slateAI_Backend.customlicense
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+slateAI\_Backend.plaidml\_setup module
+--------------------------------------
+
+.. automodule:: slateAI_Backend.plaidml_setup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+slateAI\_Backend.pyinstallerpath module
+---------------------------------------
+
+.. automodule:: slateAI_Backend.pyinstallerpath
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+slateAI\_Backend.slateAI module
+-------------------------------
+
+.. automodule:: slateAI_Backend.slateAI
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: slateAI_Backend
+   :members:
+   :undoc-members:
+   :show-inheritance:
